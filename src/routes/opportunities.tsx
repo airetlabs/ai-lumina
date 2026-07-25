@@ -9,12 +9,12 @@ import { TiltCard } from "@/components/tilt-card";
 export const Route = createFileRoute("/opportunities")({
   head: () => ({
     meta: [
-      { title: "Opportunities, News & Events — Æther Lab" },
+      { title: "Opportunities, News & Events — Airet Lab" },
       {
         name: "description",
-        content: "Open positions, latest news, and upcoming events from Æther Lab.",
+        content: "Open positions, latest news, and upcoming events from Airet Lab.",
       },
-      { property: "og:title", content: "Opportunities, News & Events — Æther Lab" },
+      { property: "og:title", content: "Opportunities, News & Events — Airet Lab" },
       { property: "og:description", content: "Join us, read the latest, mark your calendar." },
     ],
   }),
@@ -49,7 +49,7 @@ const EVENTS = [
   { date: "Jan 22", title: "AI × Pedagogy Workshop", desc: "Half-day workshop with partner faculty." },
   { date: "Feb 14", title: "Applications close — Spring cohort", desc: "AcadAIsist scholar cohort." },
   { date: "Mar 08", title: "Public seminar: Grounded reasoning", desc: "Oswald on retrieval-grounded systems." },
-  { date: "Apr 04", title: "LAK 2026 — Æther Lab presenting", desc: "Two long papers and a poster." },
+  { date: "Apr 04", title: "LAK 2026 — Airet Lab presenting", desc: "Two long papers and a poster." },
   { date: "May 20", title: "Summer internship kickoff", desc: "Onboarding for the incoming intern cohort." },
 ];
 
@@ -96,7 +96,7 @@ function Opportunities() {
     <div className="mx-auto max-w-6xl px-6 pb-24 pt-16">
       <SectionHeading
         eyebrow="Opportunities, news & events"
-        title={<>Come <span className="text-gradient-static">work</span>, come <span className="text-gradient-static">learn</span>.</>}
+        title={<>Come work, come learn.</>}
         sub="Open positions, latest news, and what's on the calendar."
       />
 

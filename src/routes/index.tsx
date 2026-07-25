@@ -9,20 +9,20 @@ import { TiltCard } from "@/components/tilt-card";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Æther Lab — AI Research & Educational Technology" },
+      { title: "Airet Lab — AI Research & Educational Technology" },
       {
         name: "description",
         content:
           "An AI research and educational technology lab building tools, scholarship, and community at the frontier of learning.",
       },
-      { property: "og:title", content: "Æther Lab" },
+      { property: "og:title", content: "Airet Lab" },
       { property: "og:description", content: "AI research and educational technology at the frontier of learning." },
     ],
   }),
   component: Home,
 });
 
-const HERO_WORDS = ["Æther", "Lab"];
+const HERO_WORDS = ["Airet", "Lab"];
 
 function Home() {
   const reduce = useReducedMotion();
@@ -32,7 +32,7 @@ function Home() {
       <section className="relative isolate min-h-[85vh] overflow-hidden">
         <div className="absolute inset-0 -z-10 grid-bg opacity-[0.35]" />
         <NeuralField className="absolute inset-0 -z-10 h-full w-full" />
-        <div className="pointer-events-none absolute -top-40 left-1/2 -z-10 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[var(--ember)] opacity-[0.18] blur-[120px]" />
+        <div className="pointer-events-none absolute -top-40 left-1/2 -z-10 h-[20px] w-[520px] -translate-x-1/2 rounded-full bg-[var(--ember)] opacity-[0.18] blur-[120px]" />
         <div className="pointer-events-none absolute -bottom-40 right-0 -z-10 h-[420px] w-[420px] rounded-full bg-[var(--teal)] opacity-[0.15] blur-[110px]" />
 
         <div className="mx-auto flex min-h-[85vh] max-w-6xl flex-col items-center justify-center px-6 pb-24 pt-24 text-center">
@@ -68,7 +68,7 @@ function Home() {
                 initial={reduce ? { opacity: 0 } : { opacity: 0, y: 40, filter: "blur(12px)" }}
                 animate={reduce ? { opacity: 1 } : { opacity: 1, y: 0, filter: "blur(0px)" }}
                 transition={{ delay: 0.4 + i * 0.12, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                className={i === 1 ? "text-gradient inline-block" : "inline-block"}
+                className="inline-block text-foreground"
               >
                 {w}
                 {i === 0 && <span> </span>}
@@ -94,16 +94,13 @@ function Home() {
             <div className="rounded-2xl border border-border/60 bg-background/40 p-5 text-left backdrop-blur">
               <div className="text-xs font-semibold uppercase tracking-widest text-[var(--ember)]">Mission</div>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                To advance AI for education through rigorous research, open tools, and partnerships that put learners
-                and teachers at the center.
+                AI is being used across a wide range of applications, some truly useful and some less so. Can it be meaningfully adopted in education, particularly to gauge how well a learner has understood? To answer this quantitatively is our <span className="font-bold">mission</span>.
               </p>
             </div>
             <div className="rounded-2xl border border-border/60 bg-background/40 p-5 text-left backdrop-blur">
               <div className="text-xs font-semibold uppercase tracking-widest text-[var(--teal)]">Vision</div>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                A world where every learner has an intelligent companion — patient, personal, and deeply grounded in
-                pedagogy.
-              </p>
+                Once such an AI-based tool is developed and proven reliable, can it be used en masse? Put simply, can it transform, and eventually replace, the conventional way we conduct examinations? Our <span className="font-bold">vision</span> is to work towards this possibility.              </p>
             </div>
           </motion.div>
 
@@ -146,7 +143,7 @@ function Home() {
             { n: 9, s: "", l: "Partner institutions" },
           ].map((s) => (
             <Reveal key={s.l} className="text-center">
-              <div className="font-display text-4xl font-bold text-gradient-static sm:text-5xl">
+              <div className="font-display text-4xl font-bold text-foreground sm:text-5xl">
                 <CountUp to={s.n} suffix={s.s} />
               </div>
               <div className="mt-2 text-sm uppercase tracking-widest text-muted-foreground">{s.l}</div>

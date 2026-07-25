@@ -8,10 +8,10 @@ import { Reveal } from "@/components/motion-primitives";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Æther Lab" },
-      { name: "description", content: "Get in touch with Æther Lab — collaborations, questions, applications." },
-      { property: "og:title", content: "Contact — Æther Lab" },
-      { property: "og:description", content: "Reach out to Æther Lab." },
+      { title: "Contact — Airet Lab" },
+      { name: "description", content: "Get in touch with Airet Lab — collaborations, questions, applications." },
+      { property: "og:title", content: "Contact — Airet Lab" },
+      { property: "og:description", content: "Reach out to Airet Lab." },
     ],
   }),
   component: Contact,
@@ -67,7 +67,7 @@ function Contact() {
         >
           <div className="text-xs font-semibold uppercase tracking-widest text-[var(--ember)]">Contact</div>
           <h1 className="mt-3 font-display text-5xl font-bold tracking-tight sm:text-6xl">
-            Get in <span className="text-gradient-static">touch</span>.
+            Get in touch.
           </h1>
           <p className="mt-4 max-w-md text-muted-foreground">
             For collaborations, media, or applications — we usually reply within a few days.
@@ -76,7 +76,7 @@ function Contact() {
           <ul className="mt-10 space-y-5">
             <li className="flex items-start gap-3">
               <MapPin className="mt-0.5 h-5 w-5 text-[var(--ember)]" />
-              <span>Æther Lab · Room 402, Kalpana Building<br />Institute of Technology · India</span>
+              <span>Airet Lab · Room 402, Kalpana Building<br />Institute of Technology · India</span>
             </li>
             <li className="flex items-center gap-3">
               <Mail className="h-5 w-5 text-[var(--ember)]" />
@@ -119,7 +119,7 @@ function Contact() {
             <button
               type="submit"
               disabled={state !== "idle"}
-              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full btn-gradient px-6 py-3 text-sm font-semibold hover:btn-gradient-hover disabled:opacity-80"
+              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-[color-mix(in_oklab,var(--ember)_85%,var(--background)_15%)] disabled:opacity-80"
             >
               {state === "idle" && "Send message"}
               {state === "loading" && (

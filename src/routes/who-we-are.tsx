@@ -6,16 +6,16 @@ import { Reveal, SectionHeading, Stagger, staggerItem } from "@/components/motio
 export const Route = createFileRoute("/who-we-are")({
   head: () => ({
     meta: [
-      { title: "Who We Are — Æther Lab" },
+      { title: "Who We Are — Airet Lab" },
       {
         name: "description",
         content:
-          "Meet the researchers, scholars, and interns behind Æther Lab — a collective advancing AI for education.",
+          "Meet the researchers, scholars, and interns behind Airet Lab — a collective advancing AI for education.",
       },
-      { property: "og:title", content: "Who We Are — Æther Lab" },
+      { property: "og:title", content: "Who We Are — Airet Lab" },
       {
         property: "og:description",
-        content: "The people building AI for learning at Æther Lab.",
+        content: "The people building AI for learning at Airet Lab.",
       },
     ],
   }),
@@ -23,9 +23,9 @@ export const Route = createFileRoute("/who-we-are")({
 });
 
 const CORE = [
-  { name: "Oswald", role: "Technical Head", focus: "Systems · LLMs · Retrieval", bio: "Leads the technical direction of the lab and its production tooling. Interested in agentic systems and evaluation." },
-  { name: "Anu", role: "Pedagogy Head", focus: "Learning science · Curriculum", bio: "Shapes how the lab's tools meet real classrooms. Bridges cognitive science with practical instruction design." },
-  { name: "Dr. R. Iyer", role: "Coordinator", focus: "Partnerships · Programs", bio: "Coordinates cross-institutional programs, funding, and lab operations." },
+  { name: "Dr.C Oswald", role: "Technical Head", focus: "Systems · LLMs · Retrieval", bio: "Leads the technical direction of the lab and its production tooling. Interested in agentic systems and evaluation." },
+  { name: "Dr. Anu Kuriakose", role: "Pedagogy Head", focus: "Learning science · Curriculum", bio: "Shapes how the lab's tools meet real classrooms. Bridges cognitive science with practical instruction design." },
+  { name: "Dr.-Ing. Prince Gideon Kubendran Amos", role: "Coordinator", focus: "Partnerships · Programs", bio: "Coordinates cross-institutional programs, funding, and lab operations." },
 ];
 
 const SCHOLARS = [
@@ -59,7 +59,7 @@ function WhoWeAre() {
     <div className="mx-auto max-w-6xl px-6 pb-24 pt-16">
       <SectionHeading
         eyebrow="Who we are"
-        title={<>A collective at the edge of <span className="text-gradient-static">learning</span> and machine intelligence.</>}
+        title={<>A collective at the edge of learning and machine intelligence.</>}
         sub="Faculty, scholars, and interns collaborating across ML, HCI, and learning science."
       />
 

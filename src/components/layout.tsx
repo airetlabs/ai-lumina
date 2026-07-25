@@ -1,8 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { Menu, Moon, Sun, X, Github, Linkedin, Twitter, Youtube, Sparkles } from "lucide-react";
+import { Menu, X, Github, Linkedin, Twitter, Youtube, Sparkles } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
-import { useTheme } from "./theme-provider";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -23,7 +22,6 @@ function LogoMark({ label = "AI" }: { label?: string }) {
 function Nav() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [open, setOpen] = useState(false);
-  const { theme, toggle } = useTheme();
 
   useEffect(() => setOpen(false), [pathname]);
 
@@ -37,7 +35,7 @@ function Nav() {
       <div className="glass mx-auto mt-3 flex max-w-7xl items-center justify-between rounded-full px-4 py-2.5 sm:px-6">
         <Link to="/" className="flex items-center gap-2.5 group">
           <LogoMark label="AI" />
-          <span className="hidden font-display font-bold tracking-tight sm:inline">Æther Lab</span>
+          <span className="hidden font-display font-bold tracking-tight sm:inline">Airet Lab</span>
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
@@ -64,24 +62,6 @@ function Nav() {
 
         <div className="flex items-center gap-2">
           <LogoMark label="IIT" />
-          <button
-            onClick={toggle}
-            aria-label="Toggle theme"
-            className="relative grid h-10 w-10 place-items-center rounded-full border border-border/60 transition-colors hover:bg-secondary"
-          >
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.span
-                key={theme}
-                initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
-                animate={{ rotate: 0, opacity: 1, scale: 1 }}
-                exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
-                transition={{ duration: 0.3 }}
-                className="absolute inset-0 grid place-items-center"
-              >
-                {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-              </motion.span>
-            </AnimatePresence>
-          </button>
           <button
             onClick={() => setOpen((o) => !o)}
             aria-label="Menu"
@@ -134,7 +114,7 @@ function Footer() {
             <LogoMark label="IIT" />
           </div>
           <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-            Æther Lab — AI research and educational technology at the frontier of learning.
+            Airet Lab — AI research and educational technology at the frontier of learning.
           </p>
         </div>
         <div>
@@ -173,7 +153,7 @@ function Footer() {
         </div>
       </div>
       <div className="border-t border-border/60 px-6 py-6 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} Æther Lab. All rights reserved. · Designed with{" "}
+        © {new Date().getFullYear()} Airet Lab. All rights reserved. · Designed with{" "}
         <span className="text-[var(--ember)]">❤</span>
       </div>
     </footer>

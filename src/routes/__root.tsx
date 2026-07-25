@@ -10,19 +10,18 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { ThemeProvider } from "@/components/theme-provider";
 import { Layout } from "@/components/layout";
 
 function NotFoundComponent() {
   return (
     <Layout>
       <div className="mx-auto flex min-h-[70vh] max-w-2xl flex-col items-center justify-center px-6 text-center">
-        <div className="font-display text-[10rem] font-bold leading-none text-gradient-static">404</div>
+        <div className="font-display text-[10rem] font-bold leading-none text-foreground">404</div>
         <h1 className="mt-2 font-display text-2xl font-bold">Signal lost.</h1>
         <p className="mt-2 text-muted-foreground">This route drifted beyond our lab's horizon.</p>
         <a
           href="/"
-          className="mt-8 inline-flex items-center rounded-full btn-gradient px-6 py-3 text-sm font-semibold"
+          className="mt-8 inline-flex items-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground"
         >
           Return home
         </a>
@@ -51,7 +50,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
               router.invalidate();
               reset();
             }}
-            className="inline-flex items-center justify-center rounded-full btn-gradient px-5 py-2.5 text-sm font-semibold"
+            className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-[color-mix(in_oklab,var(--ember)_85%,var(--background)_15%)]"
           >
             Try again
           </button>
@@ -72,14 +71,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Æther Lab — AI Research & Educational Technology" },
+      { title: "Airet Lab — AI Research & Educational Technology" },
       {
         name: "description",
         content:
-          "Æther Lab is an AI research and educational technology group building tools, scholarship, and community at the frontier of learning.",
+          "Airet Lab is an AI research and educational technology group building tools, scholarship, and community at the frontier of learning.",
       },
-      { name: "author", content: "Æther Lab" },
-      { property: "og:title", content: "Æther Lab — AI Research & Educational Technology" },
+      { name: "author", content: "Airet Lab" },
+      { property: "og:title", content: "Airet Lab — AI Research & Educational Technology" },
       {
         property: "og:description",
         content: "Research, tools, and scholarship at the frontier of learning.",
@@ -106,7 +105,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <HeadContent />
       </head>
@@ -122,11 +121,9 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        <Layout>
-          <Outlet />
-        </Layout>
-      </ThemeProvider>
+      <Layout>
+        <Outlet />
+      </Layout>
     </QueryClientProvider>
   );
 }

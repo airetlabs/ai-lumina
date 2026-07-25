@@ -2,8 +2,6 @@
 @source "../src";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 @theme inline {
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -66,32 +64,6 @@
   --ink: oklch(0.12 0.02 60);
 }
 
-/* Dark mode: obsidian */
-.dark {
-  --background: oklch(0.13 0.015 60);
-  --foreground: oklch(0.96 0.01 80);
-  --card: oklch(0.18 0.02 60);
-  --card-foreground: oklch(0.96 0.01 80);
-  --popover: oklch(0.18 0.02 60);
-  --popover-foreground: oklch(0.96 0.01 80);
-  --primary: oklch(0.78 0.18 60);
-  --primary-foreground: oklch(0.12 0.02 60);
-  --secondary: oklch(0.22 0.02 60);
-  --secondary-foreground: oklch(0.96 0.01 80);
-  --muted: oklch(0.22 0.02 60);
-  --muted-foreground: oklch(0.68 0.02 80);
-  --accent: oklch(0.75 0.14 190);
-  --accent-foreground: oklch(0.12 0.02 60);
-  --destructive: oklch(0.68 0.2 25);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.78 0.18 60);
-  --ember: oklch(0.78 0.18 60);
-  --teal: oklch(0.75 0.14 190);
-  --ink: oklch(0.08 0.02 60);
-}
-
 @layer base {
   * {
     border-color: var(--color-border);
@@ -116,22 +88,6 @@
   }
 }
 
-@utility text-gradient {
-  background: linear-gradient(100deg, var(--ember) 0%, oklch(0.82 0.15 40) 40%, var(--teal) 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: gradient-shift 8s ease-in-out infinite;
-}
-
-@utility text-gradient-static {
-  background: linear-gradient(100deg, var(--ember), var(--teal));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
 @utility glass {
   background: color-mix(in oklab, var(--background) 55%, transparent);
   backdrop-filter: blur(18px) saturate(160%);
@@ -145,11 +101,12 @@
 }
 
 @utility btn-gradient {
-  background: linear-gradient(120deg, var(--ember), oklch(0.75 0.2 30));
+  background: var(--ember);
   color: var(--ink);
-  transition: box-shadow 300ms ease, transform 200ms ease;
+  transition: background 200ms ease, color 200ms ease, box-shadow 300ms ease, transform 200ms ease;
 }
 @utility btn-gradient-hover {
+  background: color-mix(in oklab, var(--ember) 85%, var(--background) 15%);
   box-shadow: 0 15px 50px -10px color-mix(in oklab, var(--ember) 65%, transparent);
 }
 

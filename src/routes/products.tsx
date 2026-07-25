@@ -9,14 +9,14 @@ import { TiltCard } from "@/components/tilt-card";
 export const Route = createFileRoute("/products")({
   head: () => ({
     meta: [
-      { title: "Products & Tools — Æther Lab" },
+      { title: "Products & Tools — Airet Lab" },
       {
         name: "description",
         content:
-          "AcadAIsist and the next generation of AI tools built at Æther Lab for research and education.",
+          "AcadAIsist and the next generation of AI tools built at Airet Lab for research and education.",
       },
-      { property: "og:title", content: "Products & Tools — Æther Lab" },
-      { property: "og:description", content: "AcadAIsist and upcoming tools from Æther Lab." },
+      { property: "og:title", content: "Products & Tools — Airet Lab" },
+      { property: "og:description", content: "AcadAIsist and upcoming tools from Airet Lab." },
     ],
   }),
   component: Products,
@@ -84,7 +84,7 @@ function Products() {
     <div className="mx-auto max-w-6xl px-6 pb-24 pt-16">
       <SectionHeading
         eyebrow="Products & tools"
-        title={<>Built in the lab. <span className="text-gradient-static">Deployed in the wild.</span></>}
+        title={<>Built in the lab. Deployed in the wild.</>}
         sub="Software that turns our research into everyday leverage for scholars and educators."
       />
 
