@@ -1,4 +1,4 @@
-import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
+import { motion, useInView, useMotionValue, useSpring, type Variants } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 export function CountUp({ to, suffix = "", duration = 2 }: { to: number; suffix?: string; duration?: number }) {
