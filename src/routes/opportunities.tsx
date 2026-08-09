@@ -30,10 +30,10 @@ const TABS = [
 type TabId = typeof TABS[number]["id"];
 
 const OPPS = [
-  { title: "Research Intern — LLM Evaluation", desc: "6 months. Work on benchmark design for grounded generation." },
-  { title: "PhD Position — Adaptive Assessment", desc: "Fully funded. Learning science × ML background preferred." },
-  { title: "Research Engineer — Retrieval", desc: "Ship the next version of our production RAG stack." },
-  { title: "Visiting Collaborator", desc: "Short residencies with partner institutions welcome." },
+  { title: "Faculty", desc: "Any department.No prerequisites" },
+  { title: "PhD. Scholars", desc: "No prerequisites" },
+  { title: "Research Interns", desc: "No prerequisites" },
+  { title: "Collaborators", desc: "No prerequisites" },
 ];
 
 const NEWS = [
@@ -48,7 +48,7 @@ const NEWS = [
 const EVENTS = [
   { date: "Jan 22", title: "AI × Pedagogy Workshop", desc: "Half-day workshop with partner faculty." },
   { date: "Feb 14", title: "Applications close — Spring cohort", desc: "AcadAIsist scholar cohort." },
-  { date: "Mar 08", title: "Public seminar: Grounded reasoning", desc: "Oswald on retrieval-grounded systems." },
+  { date: "Mar 08", title: "Public seminar: Grounded reasoning", desc: "Speech on retrieval-grounded systems." },
   { date: "Apr 04", title: "LAK 2026 — Airet Lab presenting", desc: "Two long papers and a poster." },
   { date: "May 20", title: "Summer internship kickoff", desc: "Onboarding for the incoming intern cohort." },
 ];
@@ -95,13 +95,12 @@ function Opportunities() {
   return (
     <div className="mx-auto max-w-6xl px-6 pb-24 pt-16">
       <SectionHeading
-        eyebrow="Opportunities, news & events"
-        title={<>Come work, come learn.</>}
+        title={<>Opportunities, news & events</>}
         sub="Open positions, latest news, and what's on the calendar."
       />
 
       {/* Tabs */}
-      <div className="mt-10 inline-flex rounded-full border border-border/60 bg-card/60 p-1 backdrop-blur">
+      <div className="mt-4 inline-flex rounded-full border border-border/60 bg-card/60 p-1 backdrop-blur">
         {TABS.map((t) => {
           const active = tab === t.id;
           return (

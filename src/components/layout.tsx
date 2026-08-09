@@ -32,27 +32,50 @@ function Nav() {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className="sticky top-0 z-50 w-full"
     >
-      <div className="glass mx-auto mt-3 flex max-w-7xl items-center justify-between rounded-full px-4 py-2.5 sm:px-6">
-        <Link to="/" className="flex items-center gap-2.5 group">
-          <LogoMark label="AI" />
-          <span className="hidden font-display font-bold tracking-tight sm:inline">Airet Lab</span>
+      <div className="relative mx-auto flex h-16 max-w-6xl items-center px-6">
+
+        {/* Logo */}
+        <Link
+          to="/"
+          className="flex shrink-0 items-center gap-2 font-display text-lg font-bold"
+        >
+          <LogoMark />
+          <span>Airet Lab</span>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex">
+        {/* Desktop Navigation */}
+        <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1.5 lg:flex">
           {NAV.map((item) => {
-            const active = item.to === "/" ? pathname === "/" : pathname.startsWith(item.to);
+            const active =
+              item.to === "/"
+                ? pathname === "/"
+                : pathname.startsWith(item.to);
+
             return (
               <Link
                 key={item.to}
                 to={item.to}
-                className="relative rounded-full px-4 py-2 text-sm font-medium transition-colors hover:text-[var(--ember)]"
+                className="relative whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-colors hover:text-[var(--ember)]"
               >
-                <span className={active ? "text-[var(--ember)]" : "text-foreground/80"}>{item.label}</span>
+                <span
+                  className={
+                    active
+                      ? "text-[var(--ember)]"
+                      : "text-foreground/80"
+                  }
+                >
+                  {item.label}
+                </span>
+
                 {active && (
                   <motion.span
                     layoutId="nav-underline"
                     className="absolute inset-0 -z-10 rounded-full bg-[color-mix(in_oklab,var(--ember)_14%,transparent)]"
-                    transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 32,
+                    }}
                   />
                 )}
               </Link>
@@ -60,25 +83,28 @@ function Nav() {
           })}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <LogoMark label="IIT" />
-          <button
-            onClick={() => setOpen((o) => !o)}
-            aria-label="Menu"
-            className="grid h-10 w-10 place-items-center rounded-full border border-border/60 lg:hidden"
-          >
-            {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-          </button>
-        </div>
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="ml-auto grid h-9 w-9 place-items-center rounded-full border border-border/60 lg:hidden"
+          aria-label="Toggle menu"
+        >
+          {open ? (
+            <X className="h-5 w-5" />
+          ) : (
+            <Menu className="h-5 w-5" />
+          )}
+        </button>
       </div>
 
+      {/* Mobile Navigation */}
       <AnimatePresence>
         {open && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 top-[76px] z-40 lg:hidden"
+            className="fixed inset-0 top-16 z-40 lg:hidden"
           >
             <div className="glass mx-3 mt-2 flex flex-col gap-1 rounded-3xl p-4">
               {NAV.map((item, i) => (
@@ -102,17 +128,14 @@ function Nav() {
       </AnimatePresence>
     </motion.header>
   );
-}
 
+}
 function Footer() {
   return (
     <footer className="mt-32 border-t border-border/60 bg-[color-mix(in_oklab,var(--foreground)_4%,transparent)]">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-4">
         <div>
-          <div className="flex items-center gap-2">
-            <LogoMark label="AI" />
-            <LogoMark label="IIT" />
-          </div>
+          
           <p className="mt-4 max-w-xs text-sm text-muted-foreground">
             Airet Lab — AI research and educational technology at the frontier of learning.
           </p>
