@@ -22,7 +22,7 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const HERO_WORDS = ["AIRET ", "Lab"];
+const HERO_WORDS = ["AIRET", "Lab"];
 
 function Home() {
   const reduce = useReducedMotion();
@@ -56,19 +56,34 @@ function Home() {
           </motion.div>
 
           <h1 className="mt-6 font-display text-5xl font-bold leading-[0.95] tracking-tight sm:text-7xl md:text-[6rem]">
-            {HERO_WORDS.map((w, i) => (
-              <motion.span
-                key={w}
-                initial={reduce ? { opacity: 0 } : { opacity: 0, y: 40, filter: "blur(12px)" }}
-                animate={reduce ? { opacity: 1 } : { opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ delay: 0.4 + i * 0.12, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                className="inline-block text-foreground"
-              >
-                {w}
-                {i === 0 && <span> </span>}
-              </motion.span>
-            ))}
-          </h1>
+  {HERO_WORDS.map((w, i) => (
+    <motion.span
+      key={w}
+      initial={
+        reduce
+          ? { opacity: 0 }
+          : { opacity: 0, y: 40, filter: "blur(12px)" }
+      }
+      animate={
+        reduce
+          ? { opacity: 1 }
+          : { opacity: 1, y: 0, filter: "blur(0px)" }
+      }
+      transition={{
+        delay: 0.4 + i * 0.12,
+        duration: 0.9,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className={
+        i === 0
+          ? "inline-block font-black text-black"
+          : "ml-5 inline-block font-medium text-black sm:ml-6"
+      }
+    >
+      {w}
+    </motion.span>
+  ))}
+</h1>
 
           <motion.h2
             initial={{ opacity: 0, y: 12 }}
