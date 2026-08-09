@@ -132,20 +132,34 @@ function Nav() {
 }
 function Footer() {
   return (
-    <footer className="mt-32 border-t border-border/60 bg-[color-mix(in_oklab,var(--foreground)_4%,transparent)]">
-      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-4">
+    <footer className="border-t border-border/60 bg-black text-slate-200">
+      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-10 md:grid-cols-4">
         <div>
-          
-          <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-            Airet Lab — AI research and educational technology at the frontier of learning.
-          </p>
+          <div className="mt-4 max-w-xs text-sm text-slate-300">
+  <div className="text-lg font-semibold">
+    <span className="text-orange-400">A</span>
+    <span className="text-orange-400">I</span>
+    <span className="text-orange-400">R</span>
+    <span className="text-orange-400">E</span>
+    <span className="text-orange-400">T</span>
+    <span className="ml-1 text-white">Labs</span>
+  </div>
+
+  <div className="mt-1">
+    <span className="font-bold text-white">A</span>rtificial{" "}
+    <span className="font-bold text-white">I</span>ntelligence for{" "}
+    <span className="font-bold text-white">R</span>esearch and{" "}
+    <span className="font-bold text-white">E</span>ducational{" "}
+    <span className="font-bold text-white">T</span>ools.
+  </div>
+</div>
         </div>
         <div>
-          <h4 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Explore</h4>
+          <h4 className="text-sm font-semibold uppercase tracking-widest text-slate-200">Explore</h4>
           <ul className="mt-4 space-y-2 text-sm">
             {NAV.map((n) => (
               <li key={n.to}>
-                <Link to={n.to} className="hover:text-[var(--ember)] transition-colors">
+                <Link to={n.to} className="transition-colors hover:text-[var(--ember)] text-slate-300">
                   {n.label}
                 </Link>
               </li>
@@ -153,7 +167,7 @@ function Footer() {
           </ul>
         </div>
         <div>
-          <h4 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Connect</h4>
+          <h4 className="text-sm font-semibold uppercase tracking-widest text-slate-200">Connect</h4>
           <div className="mt-4 flex gap-2">
             {[Github, Linkedin, Twitter, Youtube].map((Icon, i) => (
               <a
@@ -162,22 +176,21 @@ function Footer() {
                 aria-label="social"
                 className="group grid h-10 w-10 place-items-center rounded-full border border-border/60 transition-all hover:border-[var(--ember)] hover:bg-[color-mix(in_oklab,var(--ember)_12%,transparent)]"
               >
-                <Icon className="h-4 w-4 transition-transform group-hover:-rotate-12 group-hover:scale-110" />
+                <Icon className="h-4 w-4 text-slate-200 transition-transform group-hover:-rotate-12 group-hover:scale-110" />
               </a>
             ))}
           </div>
         </div>
         <div>
-          <h4 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Manifesto</h4>
-          <p className="mt-4 flex items-start gap-2 text-sm text-muted-foreground">
+          <h4 className="text-sm font-semibold uppercase tracking-widest text-slate-200">Manifesto</h4>
+          <p className="mt-4 flex items-start gap-2 text-sm text-slate-300">
             <Sparkles className="mt-0.5 h-4 w-4 text-[var(--ember)]" />
             Research excellence · Educational impact · Open collaboration.
           </p>
         </div>
       </div>
-      <div className="border-t border-border/60 px-6 py-6 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} Airet Lab. All rights reserved. · Designed with{" "}
-        <span className="text-[var(--ember)]">❤</span>
+      <div className="border-t border-border/60 px-6 py-6 text-center text-xs text-slate-400">
+        © {new Date().getFullYear()} AIRET Lab. All rights reserved.
       </div>
     </footer>
   );

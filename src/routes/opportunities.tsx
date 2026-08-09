@@ -93,7 +93,7 @@ function Timeline() {
 function Opportunities() {
   const [tab, setTab] = useState<TabId>("opps");
   return (
-    <div className="mx-auto max-w-6xl px-6 pb-24 pt-16">
+    <div className="mx-auto max-w-6xl px-6 pb-24 pt-8">
       <SectionHeading
         title={<>Opportunities, news & events</>}
         sub="Open positions, latest news, and what's on the calendar."

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { TiltCard } from "@/components/tilt-card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Reveal, SectionHeading, Stagger, staggerItem } from "@/components/motion-primitives";
 
 export const Route = createFileRoute("/who-we-are")({
@@ -23,33 +24,66 @@ export const Route = createFileRoute("/who-we-are")({
 });
 
 const CORE = [
-  { name: "Dr.-Ing. Prince Gideon Kubendran Amos", role: "Coordinator", focus: "Partnerships · Programs", bio: "Coordinates cross-institutional programs, funding, and lab operations." },
-  { name: "Dr.C Oswald", role: "Technical Head", focus: "Systems · LLMs · Retrieval", bio: "Leads the technical direction of the lab and its production tooling. Interested in agentic systems and evaluation." },
-  { name: "Dr. Anu Kuriakose", role: "Pedagogy Head", focus: "Learning science · Curriculum", bio: "Shapes how the lab's tools meet real classrooms. Bridges cognitive science with practical instruction design." },
-  ];
-
-const SCHOLARS = [
-  { name: "Abhijiht Balan", role: "PhD Scholar", area: "Adaptive assessment", lab: "Leads work on IRT + LLM hybrids." },
- ];
-
-const INTERNS = [
-  { name: "K.Preetham Reddy", project: "Prompt evaluation UI" },
-  { name: "Aditi Baskaran", project: "Dataset curation" },
-  { name: "Nooh", project: "Teacher dashboard" },
-  { name: "Adarsh", project: "Speech pipeline" },
-  { name: "Madhu Parameswari", project: "Assessment agents" },
-
+  {
+    name: "Dr.-Ing. Prince Gideon Kubendran Amos",
+    role: "Coordinator",
+    focus: "Partnerships · Programs",
+    bio: "Coordinates cross-institutional programs, funding, and lab operations.",
+    image: "https://images.dicebear.com/api/initials/Prince%20Gideon%20Kubendran%20Amos.svg?backgroundColor=111111&textColor=ffffff",
+  },
+  {
+    name: "Dr.C Oswald",
+    role: "Technical Head",
+    focus: "Systems · LLMs · Retrieval",
+    bio: "Leads the technical direction of the lab and its production tooling. Interested in agentic systems and evaluation.",
+    image: "https://images.dicebear.com/api/initials/Dr.C%20Oswald.svg?backgroundColor=111111&textColor=ffffff",
+  },
+  {
+    name: "Dr. Anu Kuriakose",
+    role: "Pedagogy Head",
+    focus: "Learning science · Curriculum",
+    bio: "Shapes how the lab's tools meet real classrooms. Bridges cognitive science with practical instruction design.",
+    image: "https://images.dicebear.com/api/initials/Dr.%20Anu%20Kuriakose.svg?backgroundColor=111111&textColor=ffffff",
+  },
 ];
 
-function Avatar({ name, size = "lg" }: { name: string; size?: "lg" | "sm" }) {
-  const initials = name.split(" ").map((n) => n[0]).slice(0, 2).join("");
-  const d = size === "lg" ? "h-20 w-20 text-xl" : "h-14 w-14 text-sm";
-  return (
-    <div className={`grid ${d} shrink-0 place-items-center rounded-full bg-gradient-to-br from-[var(--ember)] to-[var(--teal)] font-display font-bold text-[var(--ink)] shadow-lg`}>
-      {initials}
-    </div>
-  );
-}
+const SCHOLARS = [
+  {
+    name: "Abhijiht Balan",
+    role: "PhD Scholar",
+    area: "Adaptive assessment",
+    lab: "Leads work on IRT + LLM hybrids.",
+    image: "https://images.dicebear.com/api/initials/Abhijiht%20Balan.svg?backgroundColor=111111&textColor=ffffff",
+  },
+];
+
+const INTERNS = [
+  {
+    name: "K.Preetham Reddy",
+    project: "Prompt evaluation UI",
+    image: "https://images.dicebear.com/api/initials/K.Preetham%20Reddy.svg?backgroundColor=111111&textColor=ffffff",
+  },
+  {
+    name: "Aditi Baskaran",
+    project: "Dataset curation",
+    image: "https://images.dicebear.com/api/initials/Aditi%20Baskaran.svg?backgroundColor=111111&textColor=ffffff",
+  },
+  {
+    name: "Nooh",
+    project: "Teacher dashboard",
+    image: "https://images.dicebear.com/api/initials/Nooh.svg?backgroundColor=111111&textColor=ffffff",
+  },
+  {
+    name: "Adarsh",
+    project: "Speech pipeline",
+    image: "https://images.dicebear.com/api/initials/Adarsh.svg?backgroundColor=111111&textColor=ffffff",
+  },
+  {
+    name: "Madhu Parameswari",
+    project: "Assessment agents",
+    image: "https://images.dicebear.com/api/initials/Madhu%20Parameswari.svg?backgroundColor=111111&textColor=ffffff",
+  },
+];
 
 function WhoWeAre() {
   return (
@@ -68,7 +102,13 @@ function WhoWeAre() {
             <motion.div key={p.name} variants={staggerItem}>
               <TiltCard className="h-full">
                 <div className="flex items-start gap-4">
-                  <Avatar name={p.name} />
+                  <Avatar className="h-20 w-20 text-lg">
+                    {p.image ? (
+                      <AvatarImage src={p.image} alt={p.name} />
+                    ) : (
+                      <AvatarFallback>{p.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}</AvatarFallback>
+                    )}
+                  </Avatar>
                   <div>
                     <div className="font-display text-lg font-bold">{p.name}</div>
                     <div className="text-sm text-[var(--ember)]">{p.role}</div>
@@ -94,7 +134,13 @@ function WhoWeAre() {
             <motion.div key={s.name} variants={staggerItem}>
               <TiltCard className="h-full">
                 <div className="flex items-start gap-4">
-                  <Avatar name={s.name} />
+                  <Avatar className="h-20 w-20 text-lg">
+                    {s.image ? (
+                      <AvatarImage src={s.image} alt={s.name} />
+                    ) : (
+                      <AvatarFallback>{s.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}</AvatarFallback>
+                    )}
+                  </Avatar>
                   <div>
                     <div className="font-display text-base font-bold">{s.name}</div>
                     <div className="text-xs uppercase tracking-widest text-muted-foreground">{s.role}</div>
@@ -121,7 +167,13 @@ function WhoWeAre() {
             <motion.div key={i.name} variants={staggerItem}>
               <TiltCard className="h-full">
                 <div className="flex items-center gap-3">
-                  <Avatar name={i.name} size="sm" />
+                  <Avatar className="h-14 w-14 text-sm">
+                    {i.image ? (
+                      <AvatarImage src={i.image} alt={i.name} />
+                    ) : (
+                      <AvatarFallback>{i.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}</AvatarFallback>
+                    )}
+                  </Avatar>
                   <div>
                     <div className="font-display font-semibold">{i.name}</div>
                     <div className="text-xs text-muted-foreground">{i.project}</div>
