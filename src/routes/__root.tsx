@@ -78,7 +78,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Airet Lab is an AI research and educational technology group building tools, scholarship, and community at the frontier of learning.",
       },
       { name: "author", content: "Airet Lab" },
-      { property: "og:title", content: "Airet Lab — AI Research & Educational Technology" },
+      { property: "og:title", content: "Airet Lab " },
       {
         property: "og:description",
         content: "Research, tools, and scholarship at the frontier of learning.",
