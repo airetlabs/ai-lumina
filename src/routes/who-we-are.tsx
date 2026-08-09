@@ -23,25 +23,22 @@ export const Route = createFileRoute("/who-we-are")({
 });
 
 const CORE = [
+  { name: "Dr.-Ing. Prince Gideon Kubendran Amos", role: "Coordinator", focus: "Partnerships · Programs", bio: "Coordinates cross-institutional programs, funding, and lab operations." },
   { name: "Dr.C Oswald", role: "Technical Head", focus: "Systems · LLMs · Retrieval", bio: "Leads the technical direction of the lab and its production tooling. Interested in agentic systems and evaluation." },
   { name: "Dr. Anu Kuriakose", role: "Pedagogy Head", focus: "Learning science · Curriculum", bio: "Shapes how the lab's tools meet real classrooms. Bridges cognitive science with practical instruction design." },
-  { name: "Dr.-Ing. Prince Gideon Kubendran Amos", role: "Coordinator", focus: "Partnerships · Programs", bio: "Coordinates cross-institutional programs, funding, and lab operations." },
-];
+  ];
 
 const SCHOLARS = [
-  { name: "Kiran Menon", role: "PhD Scholar", area: "Adaptive assessment", lab: "Leads work on IRT + LLM hybrids." },
-  { name: "Priya Rao", role: "PhD Scholar", area: "Human-AI dialogue", lab: "Studies teacher-in-the-loop tutoring." },
-  { name: "Aditya Bose", role: "Research Associate", area: "Retrieval systems", lab: "Owns the lab's core RAG stack." },
-  { name: "Maya Fernandes", role: "PhD Scholar", area: "Multimodal learning", lab: "Video + speech understanding for classrooms." },
-];
+  { name: "Abhijiht Balan", role: "PhD Scholar", area: "Adaptive assessment", lab: "Leads work on IRT + LLM hybrids." },
+ ];
 
 const INTERNS = [
-  { name: "Ravi K.", project: "Prompt evaluation UI" },
-  { name: "Nia S.", project: "Dataset curation" },
-  { name: "Arjun V.", project: "Teacher dashboard" },
-  { name: "Lea M.", project: "Speech pipeline" },
-  { name: "Diego P.", project: "Assessment agents" },
-  { name: "Yuki T.", project: "Design system" },
+  { name: "K.Preetham Reddy", project: "Prompt evaluation UI" },
+  { name: "Aditi Baskaran", project: "Dataset curation" },
+  { name: "Nooh", project: "Teacher dashboard" },
+  { name: "Adarsh", project: "Speech pipeline" },
+  { name: "Madhu Parameswari", project: "Assessment agents" },
+
 ];
 
 function Avatar({ name, size = "lg" }: { name: string; size?: "lg" | "sm" }) {
@@ -56,11 +53,9 @@ function Avatar({ name, size = "lg" }: { name: string; size?: "lg" | "sm" }) {
 
 function WhoWeAre() {
   return (
-    <div className="mx-auto max-w-6xl px-6 pb-24 pt-16">
+    <div className="mx-auto max-w-6xl px-6 pb-2 pt-16">
       <SectionHeading
-        eyebrow="Who we are"
-        title={<>A collective at the edge of learning and machine intelligence.</>}
-        sub="Faculty, scholars, and interns collaborating across ML, HCI, and learning science."
+        title={<>Meet the researchers, scholars, and interns behind Airet Lab</>}
       />
 
       {/* CORE TEAM */}
