@@ -29,21 +29,21 @@ const CORE = [
     role: "Coordinator",
     focus: "Partnerships · Programs",
     bio: "Coordinates cross-institutional programs, funding, and lab operations.",
-    image: "public/images/faculty/prince_sir.png",
+    image: "/images/faculty/prince_sir.png",
   },
   {
     name: "Dr.C Oswald",
     role: "Technical Head",
     focus: "Systems · LLMs · Retrieval",
     bio: "Leads the technical direction of the lab and its production tooling. Interested in agentic systems and evaluation.",
-    image: "public/images/faculty/oswald_sir.png",
+    image: "/images/faculty/oswald_sir.png",
   },
   {
     name: "Dr. Anu Kuriakose",
     role: "Pedagogy Head",
     focus: "Learning science · Curriculum",
     bio: "Shapes how the lab's tools meet real classrooms. Bridges cognitive science with practical instruction design.",
-    image: "public/images/faculty/anu_mam.png",
+    image: "/images/faculty/anu_mam.png",
   },
 ];
 
@@ -53,7 +53,7 @@ const SCHOLARS = [
     role: "PhD Scholar",
     area: "Adaptive assessment",
     lab: "Leads work on IRT + LLM hybrids.",
-    image: "public/images/scholars/Abhijith_Balan.png",
+    image: "/images/scholars/Abhijith_Balan.png",
   },
 ];
 
@@ -61,27 +61,27 @@ const INTERNS = [
   {
     name: "K.Preetham Reddy",
     project: "SLM",
-    image: "public/images/students/PreethamReddy.png",
+    image: "/images/students/PreethamReddy.png",
   },
   {
     name: "Aditi Baskaran",
     project: "Frontend and Backend",
-    image: "public/images/students/AditiBaskaran.png",
+    image: "/images/students/AditiBaskaran.png",
   },
   {
     name: "Nooh",
     project: "RAG",
-    image: "public/images/students/Nooh_K.png",
+    image: "/images/students/Nooh_K.png",
   },
   {
     name: "Adarsh",
     project: "RAG",
-    image: "public/images/students/Adarsh.png",
+    image: "/images/students/Adarsh.png",
   },
   {
     name: "Madhu Parameswari",
     project: "Frontend",
-    image: "public/images/students/MadhuParameswariGanesan.png",
+    image: "/images/students/MadhuParameswariGanesan.png",
   },
 ];
 
@@ -109,7 +109,7 @@ function WhoWeAre() {
                       <AvatarFallback>{p.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}</AvatarFallback>
                     )}
                   </Avatar>
-                  <div>
+                
                     <div className="font-display text-lg font-bold">{p.name}</div>
                     <div className="text-sm text-[var(--ember)]">{p.role}</div>
                   </div>
