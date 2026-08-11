@@ -29,59 +29,59 @@ const CORE = [
     role: "Coordinator",
     focus: "Partnerships · Programs",
     bio: "Coordinates cross-institutional programs, funding, and lab operations.",
-    image: "https://images.dicebear.com/api/initials/Prince%20Gideon%20Kubendran%20Amos.svg?backgroundColor=111111&textColor=ffffff",
+    image: "public/images/faculty/prince_sir.png",
   },
   {
     name: "Dr.C Oswald",
     role: "Technical Head",
     focus: "Systems · LLMs · Retrieval",
     bio: "Leads the technical direction of the lab and its production tooling. Interested in agentic systems and evaluation.",
-    image: "https://images.dicebear.com/api/initials/Dr.C%20Oswald.svg?backgroundColor=111111&textColor=ffffff",
+    image: "public/images/faculty/oswald_sir.png",
   },
   {
     name: "Dr. Anu Kuriakose",
     role: "Pedagogy Head",
     focus: "Learning science · Curriculum",
     bio: "Shapes how the lab's tools meet real classrooms. Bridges cognitive science with practical instruction design.",
-    image: "https://images.dicebear.com/api/initials/Dr.%20Anu%20Kuriakose.svg?backgroundColor=111111&textColor=ffffff",
+    image: "public/images/faculty/anu_mam.png",
   },
 ];
 
 const SCHOLARS = [
   {
-    name: "Abhijiht Balan",
+    name: "Abhijith Balan",
     role: "PhD Scholar",
     area: "Adaptive assessment",
     lab: "Leads work on IRT + LLM hybrids.",
-    image: "https://images.dicebear.com/api/initials/Abhijiht%20Balan.svg?backgroundColor=111111&textColor=ffffff",
+    image: "public/images/scholars/Abhijith_Balan.png",
   },
 ];
 
 const INTERNS = [
   {
     name: "K.Preetham Reddy",
-    project: "Prompt evaluation UI",
-    image: "https://images.dicebear.com/api/initials/K.Preetham%20Reddy.svg?backgroundColor=111111&textColor=ffffff",
+    project: "SLM",
+    image: "public/images/students/PreethamReddy.png",
   },
   {
     name: "Aditi Baskaran",
-    project: "Dataset curation",
-    image: "https://images.dicebear.com/api/initials/Aditi%20Baskaran.svg?backgroundColor=111111&textColor=ffffff",
+    project: "Frontend and Backend",
+    image: "public/images/students/AditiBaskaran.png",
   },
   {
     name: "Nooh",
-    project: "Teacher dashboard",
-    image: "https://images.dicebear.com/api/initials/Nooh.svg?backgroundColor=111111&textColor=ffffff",
+    project: "RAG",
+    image: "public/images/students/Nooh_K.png",
   },
   {
     name: "Adarsh",
-    project: "Speech pipeline",
-    image: "https://images.dicebear.com/api/initials/Adarsh.svg?backgroundColor=111111&textColor=ffffff",
+    project: "RAG",
+    image: "public/images/students/Adarsh.png",
   },
   {
     name: "Madhu Parameswari",
-    project: "Assessment agents",
-    image: "https://images.dicebear.com/api/initials/Madhu%20Parameswari.svg?backgroundColor=111111&textColor=ffffff",
+    project: "Frontend",
+    image: "public/images/students/MadhuParameswariGanesan.png",
   },
 ];
 
@@ -167,7 +167,7 @@ function WhoWeAre() {
             <motion.div key={i.name} variants={staggerItem}>
               <TiltCard className="h-full">
                 <div className="flex items-center gap-3">
-                  <Avatar className="h-14 w-14 text-sm">
+                  <Avatar className="h-20 w-20 text-lg">
                     {i.image ? (
                       <AvatarImage src={i.image} alt={i.name} />
                     ) : (
