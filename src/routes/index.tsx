@@ -91,7 +91,7 @@ function Home() {
             transition={{ delay: 0.75, duration: 0.7 }}
             className="mt-6 max-w-2xl font-display text-lg font-medium text-muted-foreground sm:text-2xl"
           >
-            Artificial Intelligence for Research and Educational Tools
+            Artificial Intelligence for Research on Educational Tools
           </motion.h2>
 
           <motion.div

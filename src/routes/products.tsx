@@ -13,7 +13,7 @@ export const Route = createFileRoute("/products")({
       {
         name: "description",
         content:
-          "AcadAIsist and the next generation of AI tools built at Airet Lab for research and education.",
+          "An agentic evaluation tool built on a human-in-the-loop framework.Small Language Model Foundation.Built on lightweight SLMs to make AI-assisted evaluation affordable, efficient, and institutionally deployable.",
       },
       { property: "og:title", content: "Products & Tools — Airet Lab" },
       { property: "og:description", content: "AcadAIsist and upcoming tools from Airet Lab." },
@@ -23,12 +23,19 @@ export const Route = createFileRoute("/products")({
 });
 
 const FEATURES = [
-  { icon: Search, title: "Semantic paper search", desc: "Find related work across your library and the open web." },
-  { icon: Brain, title: "Grounded reasoning", desc: "Answers cite the exact passages they were drawn from." },
-  { icon: MessageSquare, title: "Dialogue over PDFs", desc: "Ask, refine, and iterate against your reading stack." },
-  { icon: LineChart, title: "Writing analytics", desc: "Track argument structure, novelty, and coverage." },
-  { icon: Layers, title: "Multi-agent workflows", desc: "Compose reviewers, summarizers, and critics." },
-  { icon: Zap, title: "Offline-first drafts", desc: "Your notes stay on your device by default." },
+  { icon: Search, title: "No-Code Faculty Interface", desc: "Faculty can enter questions, answer keys, marks, expected length, and rubrics without writing a single line of code." },
+  { icon: Brain, title: "Student Answer Interface", desc: "Students answer directly within the platform, removing the need for uploaded answer sheets or manual formatting." },
+  { icon: MessageSquare, title: "Semantic Answer Understanding", desc: "The tool recognises when the same idea is expressed in different words, helping evaluate meaning rather than memorised phrasing." },
+  { icon: LineChart, title: "Rubric-Grounded Evaluation", desc: "Marks are awarded only against faculty-defined rubrics, keeping evaluation aligned with the course expectation." },
+  { icon: Layers, title: "Faculty-Controlled Knowledge Base", desc: "The SLM provides language understanding, while all factual authority comes from the faculty-provided key and rubric." },
+  { icon: Zap, title: "Human-in-the-Loop Verification", desc: "Faculty can review, accept, modify, or reject suggested marks, making the system governable and transparent." },
+  { icon: Search, title: "Evidence-Based Scoring", desc: "Each suggested score is supported by matched points, missing components, and evaluation justification." },
+  { icon: Brain, title: "Uncertainty Flagging", desc: "Ambiguous or weakly matched answers are flagged for faculty review instead of being blindly graded." },
+  { icon: MessageSquare, title: "Locally Deployable and Secure", desc: "The lightweight architecture allows institutional deployment without depending entirely on external cloud systems." },
+  { icon: LineChart, title: "Progressive Model Refinement", desc: "Faculty corrections can be used to improve the system over time and reduce mismatch with human evaluation." },
+  { icon: Zap, title: "Expandable Academic Assistant", desc: "Starting with descriptive answer evaluation, the platform can later grow toward equation handling, note-based question generation, and course support." },
+ 
+
 ];
 
 const TECH = ["SLMs", "LangChain", "Python", "React", "PostgreSQL", "pgvector"];
@@ -93,8 +100,7 @@ function Products() {
               </div>
               <h3 className="mt-4 font-display text-4xl font-bold tracking-tight sm:text-5xl">AcadAIsist</h3>
               <p className="mt-2 max-w-xl text-lg text-muted-foreground">
-                An academic co-pilot for scholars — reads, reasons, and writes with you.
-              </p>
+                An agentic evaluation tool built on a human-in-the-loop framework.              </p>
             </div>
             <div className="flex gap-3">
               <MagButton href="#" variant="outline">
@@ -105,9 +111,8 @@ function Products() {
           </div>
 
           <p className="mt-8 max-w-3xl leading-relaxed text-muted-foreground">
-            AcadAIsist grounds every answer in your own reading stack, cites its sources, and lets you compose
-            multi-agent workflows — reviewers, summarizers, critics — that plug into your research process.
-          </p>
+            Small Language Model Foundation.<br></br>
+Built on lightweight SLMs to make AI-assisted evaluation affordable, efficient, and institutionally deployable          </p>
 
           {/* Features */}
           <Stagger className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -149,7 +154,7 @@ function Products() {
           </div>
 
           {/* Publications */}
-          <div className="mt-14">
+          {/* <div className="mt-14">
             <h4 className="font-display text-2xl font-bold">Related publications</h4>
             <ul className="mt-4 divide-y divide-border/60">
               {[
@@ -165,7 +170,7 @@ function Products() {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
 
