@@ -103,7 +103,7 @@ function Products() {
                 An agentic evaluation tool built on a human-in-the-loop framework.              </p>
             </div>
             <div className="flex gap-3">
-              <MagButton href="#" variant="outline">
+              <MagButton href="https://github.com/airetlabs/ANRF-project" variant="outline">
                 <Github className="h-4 w-4" /> GitHub
               </MagButton>
               

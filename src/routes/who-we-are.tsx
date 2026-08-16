@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { TiltCard } from "@/components/tilt-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Card } from "@/components/ui/card";
 import { Reveal, SectionHeading, Stagger, staggerItem } from "@/components/motion-primitives";
+import { ExternalLink } from "lucide-react";
 
 export const Route = createFileRoute("/who-we-are")({
   head: () => ({
@@ -30,6 +31,7 @@ const CORE = [
     focus: "Partnerships · Programs",
     bio: "Coordinates cross-institutional programs, funding, and lab operations.",
     image: "/images/faculty/prince_sir.png",
+    website: "https://www.nitt.edu/home/academics/departments/meta/faculty/prince/",
   },
   {
     name: "Dr.C Oswald",
@@ -37,6 +39,7 @@ const CORE = [
     focus: "Systems · LLMs · Retrieval",
     bio: "Leads the technical direction of the lab and its production tooling. Interested in agentic systems and evaluation.",
     image: "/images/faculty/oswald_sir.png",
+    website: "https://www.nitt.edu/home/academics/departments/cse/faculty/oswald/",
   },
   {
     name: "Dr. Anu Kuriakose",
@@ -44,6 +47,7 @@ const CORE = [
     focus: "Learning science · Curriculum",
     bio: "Shapes how the lab's tools meet real classrooms. Bridges cognitive science with practical instruction design.",
     image: "/images/faculty/anu_mam.png",
+    website: "https://www.nitt.edu/home/academics/departments/humanities/faculty/anuk/",
   },
 ];
 
@@ -99,40 +103,53 @@ function WhoWeAre() {
         </Reveal>
         <Stagger className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {CORE.map((p) => (
-            <motion.div key={p.name} variants={staggerItem}>
-              <TiltCard className="h-full">
-                <div className="flex items-start gap-4">
-                  <Avatar className="h-20 w-20 text-lg">
-                    {p.image ? (
-                      <AvatarImage src={p.image} alt={p.name} />
-                    ) : (
-                      <AvatarFallback>{p.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}</AvatarFallback>
-                    )}
-                  </Avatar>
-                  <div>
-                    <div className="font-display text-lg font-bold">{p.name}</div>
-                    <div className="text-sm text-[var(--ember)]">{p.role}</div>
+            <motion.div key={p.name} variants={staggerItem} whileHover={{ scale: 1.05, y: -8 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
+              <Card className="h-full p-6">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-start gap-4 flex-1">
+                    <Avatar className="h-20 w-20 text-lg">
+                      {p.image ? (
+                        <AvatarImage src={p.image} alt={p.name} />
+                      ) : (
+                        <AvatarFallback>{p.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}</AvatarFallback>
+                      )}
+                    </Avatar>
+                    <div>
+                      <div className="font-display text-lg font-bold">{p.name}</div>
+                      <div className="text-sm text-[var(--ember)]">{p.role}</div>
+                    </div>
                   </div>
+                  {p.website && p.website !== "#" && (
+                    <a
+                      href={p.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-shrink-0 text-muted-foreground hover:text-[var(--ember)] transition-colors"
+                      title="Visit website"
+                    >
+                      <ExternalLink className="h-5 w-5" />
+                    </a>
+                  )}
                 </div>
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{p.bio}</p>
                 <div className="mt-4 inline-flex rounded-full border border-border/60 bg-secondary/60 px-3 py-1 text-xs">
                   {p.focus}
                 </div>
-              </TiltCard>
+              </Card>
             </motion.div>
           ))}
         </Stagger>
       </div>
 
       {/* SCHOLARS */}
-      <div className="mt-24">
+      <div className="mt-16">
         <Reveal>
           <h3 className="font-display text-2xl font-semibold">Scholars</h3>
         </Reveal>
         <Stagger className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {SCHOLARS.map((s) => (
-            <motion.div key={s.name} variants={staggerItem}>
-              <TiltCard className="h-full">
+            <motion.div key={s.name} variants={staggerItem} whileHover={{ scale: 1.05, y: -8 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
+              <Card className="h-full p-6">
                 <div className="flex items-start gap-4">
                   <Avatar className="h-20 w-20 text-lg">
                     {s.image ? (
@@ -151,21 +168,21 @@ function WhoWeAre() {
                   <span className="text-[var(--teal)]">{s.area}</span>
                 </div>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.lab}</p>
-              </TiltCard>
+              </Card>
             </motion.div>
           ))}
         </Stagger>
       </div>
 
       {/* INTERNS */}
-      <div className="mt-24">
+      <div className="mt-16">
         <Reveal>
           <h3 className="font-display text-2xl font-semibold">Interns</h3>
         </Reveal>
         <Stagger className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {INTERNS.map((i) => (
-            <motion.div key={i.name} variants={staggerItem}>
-              <TiltCard className="h-full">
+            <motion.div key={i.name} variants={staggerItem} whileHover={{ scale: 1.05, y: -8 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
+              <Card className="h-full p-6">
                 <div className="flex items-center gap-3">
                   <Avatar className="h-20 w-20 text-lg">
                     {i.image ? (
@@ -179,7 +196,7 @@ function WhoWeAre() {
                     <div className="text-xs text-muted-foreground">{i.project}</div>
                   </div>
                 </div>
-              </TiltCard>
+              </Card>
             </motion.div>
           ))}
         </Stagger>

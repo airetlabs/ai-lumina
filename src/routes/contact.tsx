@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { FormEvent, useState } from "react";
-import { Mail, MapPin, Phone, Github, Linkedin, Twitter, Youtube, Check, Loader2 } from "lucide-react";
+import { useState } from "react";
+import { Mail, MapPin, Phone, Github, Linkedin, Twitter, Youtube } from "lucide-react";
 import { MagButton } from "@/components/mag-button";
 import { Reveal } from "@/components/motion-primitives";
+import emailjs from "@emailjs/browser";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -17,41 +18,81 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 
+// 🔑 Same EmailJS config/usage as Page 1's form
+const EMAILJS_SERVICE_ID = "service_t45zms1";
+const EMAILJS_TEMPLATE_ID = "template_dq284ef";
+const EMAILJS_PUBLIC_KEY = "5ISd_sKvuFsWpgHj1";
+
+/* ---------- Form sub-components (copied exactly from Page 1) ---------- */
+
+function FloatingField({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <label className="eyebrow font-bold text-xs sm:text-[13px] mb-2 block tracking-wider">{label}</label>
+      {children}
+    </div>
+  );
+}
+
 function Field({
   label,
-  type = "text",
-  required,
-  as = "input",
-  name,
-}: {
-  label: string;
-  type?: string;
-  required?: boolean;
-  as?: "input" | "textarea";
-  name: string;
-}) {
-  const cls =
-    "peer w-full rounded-2xl border border-border/70 bg-background/40 px-4 pb-3 pt-6 text-sm outline-none transition-all placeholder-transparent backdrop-blur focus:border-[var(--ember)] focus:shadow-[0_0_0_4px_color-mix(in_oklab,var(--ember)_20%,transparent)]";
+  ...props
+}: { label: string } & React.InputHTMLAttributes<HTMLInputElement>) {
   return (
-    <label className="relative block">
-      {as === "input" ? (
-        <input type={type} name={name} required={required} placeholder={label} className={cls} />
-      ) : (
-        <textarea name={name} required={required} rows={5} placeholder={label} className={cls} />
-      )}
-      <span className="pointer-events-none absolute left-4 top-2 text-xs font-medium uppercase tracking-widest text-muted-foreground transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:normal-case peer-focus:top-2 peer-focus:text-xs peer-focus:uppercase peer-focus:text-[var(--ember)]">
-        {label}
-      </span>
-    </label>
+    <div>
+      <label className="eyebrow font-bold text-xs sm:text-[13px] mb-2 block tracking-wider">{label}</label>
+      <input
+        {...props}
+        className="w-full rounded-xl bg-canvas ring-1 ring-border px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-ink transition-all"
+      />
+    </div>
   );
 }
 
 function Contact() {
-  const [state, setState] = useState<"idle" | "loading" | "done">("idle");
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  /* ---------- Form state + handleSend (copied exactly from Page 1) ---------- */
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    affiliation: "",
+    subject: "Research collaboration",
+    message: "",
+  });
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+  const update =
+    (key: keyof typeof form) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+      setForm((f) => ({ ...f, [key]: e.target.value }));
+
+  const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
-    setState("loading");
-    setTimeout(() => setState("done"), 1200);
+    setStatus("sending");
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          name: form.name,
+          email: form.email,
+          affiliation: form.affiliation,
+          subject: form.subject,
+          message: form.message,
+        },
+        { publicKey: EMAILJS_PUBLIC_KEY },
+      );
+      setStatus("sent");
+      setForm({
+        name: "",
+        email: "",
+        affiliation: "",
+        subject: "Research collaboration",
+        message: "",
+      });
+    } catch (err) {
+      console.error(err);
+      setStatus("error");
+    }
   };
 
   return (
@@ -60,6 +101,8 @@ function Contact() {
       <div className="pointer-events-none absolute top-40 right-0 -z-10 h-72 w-72 rounded-full bg-[var(--teal)] opacity-20 blur-[100px]" />
 
       <div className="grid gap-12 md:grid-cols-2">
+      
+        {/* ---------- Left column: unchanged from Page 2 ---------- */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
@@ -76,67 +119,135 @@ function Contact() {
           <ul className="mt-10 space-y-5">
             <li className="flex items-start gap-3">
               <MapPin className="mt-0.5 h-5 w-5 text-[var(--ember)]" />
-              <span>Airet Lab · Room 402, Kalpana Building<br />Institute of Technology · India</span>
+              <span>Airet Lab · Room 303<br></br> Computer Science and Engineering Department<br />NIT Thiruchirappalli</span>
             </li>
             <li className="flex items-center gap-3">
               <Mail className="h-5 w-5 text-[var(--ember)]" />
-              <a href="mailto:hello@aetherlab.ai" className="hover:text-[var(--ember)] transition-colors">
-                hello@aetherlab.ai
+              <a href="mailto:airetlabs@gmail.com" className="hover:text-[var(--ember)] transition-colors">
+                airetlabs@gmail.com
               </a>
             </li>
             <li className="flex items-center gap-3">
               <Phone className="h-5 w-5 text-[var(--ember)]" />
-              <span>+91 · 000 000 0000</span>
+              <span>0431-250-3223</span>
             </li>
           </ul>
 
-          <div className="mt-10 flex gap-2">
-            {[Linkedin, Twitter, Github, Youtube].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                aria-label="social"
-                className="group grid h-11 w-11 place-items-center rounded-full border border-border/60 transition-all hover:border-[var(--ember)] hover:bg-[color-mix(in_oklab,var(--ember)_12%,transparent)]"
-              >
-                <Icon className="h-4 w-4 transition-transform group-hover:-rotate-12 group-hover:scale-110" />
-              </a>
-            ))}
-          </div>
+         <div className="mt-10 flex gap-2">
+  {[
+    {
+      Icon: Linkedin,
+      href: "https://www.linkedin.com/school/takshashila-b.ed.-college-halvad/",
+      label: "LinkedIn",
+    },
+    {
+      Icon: Twitter,
+      href: "https://twitter.com/",
+      label: "Twitter",
+    },
+    {
+      Icon: Github,
+      href: "https://github.com/airetlabs",
+      label: "GitHub",
+    },
+    {
+      Icon: Youtube,
+      href: "https://www.youtube.com/@NITTiruchirappalliOfficial",
+      label: "YouTube",
+    },
+  ].map(({ Icon, href, label }) => (
+    <a
+      key={label}
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className="group grid h-11 w-11 place-items-center rounded-full border border-border/60 transition-all hover:border-[var(--ember)] hover:bg-[color-mix(in_oklab,var(--ember)_12%,transparent)]"
+    >
+      <Icon className="h-4 w-4 transition-transform group-hover:-rotate-12 group-hover:scale-110" />
+    </a>
+  ))}
+</div>
         </motion.div>
 
+        {/* ---------- Right column: form JSX copied exactly from Page 1 ---------- */}
         <motion.form
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          onSubmit={onSubmit}
-          className="rounded-3xl border border-border/60 bg-card/60 p-6 backdrop-blur sm:p-8"
+          whileHover={{ y: -2 }}
+          transition={{ duration: 0.4 }}
+          onSubmit={handleSend}
+          className="space-y-6 rounded-3xl bg-surface ring-1 ring-border p-8 lg:p-10 hover:shadow-[0_30px_80px_-30px_rgba(0,0,0,0.18)] hover:ring-ink/20 transition-all"
         >
-          <div className="grid gap-4">
-            <Field label="Name" name="name" required />
-            <Field label="Email" type="email" name="email" required />
-            <Field label="Subject" name="subject" required />
-            <Field label="Message" name="message" as="textarea" required />
-            <button
-              type="submit"
-              disabled={state !== "idle"}
-              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-[color-mix(in_oklab,var(--ember)_85%,var(--background)_15%)] disabled:opacity-80"
+          <div className="grid sm:grid-cols-2 gap-6">
+            <Field
+              label="Full name"
+              placeholder="Your name"
+              value={form.name}
+              onChange={update("name")}
+              required
+            />
+            <Field
+              label="Email"
+              type="email"
+              placeholder="you@institute.edu"
+              value={form.email}
+              onChange={update("email")}
+              required
+            />
+          </div>
+
+          <Field
+            label="Affiliation"
+            placeholder="University, company or organization"
+            value={form.affiliation}
+            onChange={update("affiliation")}
+          />
+
+          <FloatingField label="Subject">
+            <select
+              value={form.subject}
+              onChange={update("subject")}
+              className="w-full rounded-xl bg-canvas ring-1 ring-border px-4 py-3 text-sm focus:outline-none focus:ring-ink transition-all"
             >
-              {state === "idle" && "Send message"}
-              {state === "loading" && (
-                <>
-                  <Loader2 className="h-4 w-4 animate-spin" /> Sending…
-                </>
-              )}
-              {state === "done" && (
-                <>
-                  <Check className="h-4 w-4" /> Sent — talk soon
-                </>
-              )}
-            </button>
+              <option>Research collaboration</option>
+              <option>Doctoral admission inquiry</option>
+              <option>Industry partnership</option>
+              <option>Other</option>
+            </select>
+          </FloatingField>
+
+          <FloatingField label="Message">
+            <textarea
+              rows={6}
+              placeholder="Tell us briefly about your interest..."
+              value={form.message}
+              onChange={update("message")}
+              required
+              className="w-full rounded-xl bg-canvas ring-1 ring-border px-4 py-3 text-sm focus:outline-none focus:ring-ink focus:ring-2 resize-none transition-all"
+            />
+          </FloatingField>
+
+          <div className="flex items-center gap-4">
+            <motion.button
+              whileHover={{ y: -2, boxShadow: "0 14px 32px -12px color-mix(in_oklab, var(--ember) 70%, transparent)" }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.2 }}
+              type="submit"
+              disabled={status === "sending"}
+              className="inline-flex items-center gap-2 rounded-full bg-[var(--ember)] text-[var(--ink)] px-6 py-3 text-sm font-semibold shadow-[0_8px_24px_-12px_rgba(0,0,0,0.35)] transition-colors hover:bg-[color-mix(in_oklab,var(--ember)_85%,black_15%)] disabled:opacity-50"
+            >
+              {status === "sending" ? "Sending…" : "Send message →"}
+            </motion.button>
+            {status === "sent" && (
+              <span className="text-sm text-accent">Message sent — thank you!</span>
+            )}
+            {status === "error" && (
+              <span className="text-sm text-red-500">Something went wrong. Try again.</span>
+            )}
           </div>
         </motion.form>
       </div>
 
+      {/* ---------- Bottom CTA: unchanged from Page 2 ---------- */}
       <Reveal>
         <div className="mt-24 overflow-hidden rounded-3xl border border-border/60 bg-gradient-to-r from-[color-mix(in_oklab,var(--ember)_18%,transparent)] to-[color-mix(in_oklab,var(--teal)_18%,transparent)] p-10 text-center backdrop-blur">
           <h3 className="font-display text-3xl font-bold sm:text-4xl">Interested in joining our lab?</h3>
