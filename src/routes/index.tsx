@@ -186,8 +186,8 @@ function Home() {
             {
               icon: BookOpen,
               tag: "News & events",
-              title: "New paper accepted at LAK 2026.",
-              desc: "Latest talks, publications, and open positions across the lab.",
+              title: "Coming Soon",
+              desc: "",
               to: "/opportunities",
             },
           ].map((p) => (
